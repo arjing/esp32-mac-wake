@@ -110,12 +110,8 @@ Messages are not retained, so a subscriber joining after startup may miss the on
 
 The setup hotspot currently has no password and its page has no authentication; configure it only in a trusted environment. The `wol` and `esp32-heart` topics are fixed: multiple devices using them may all react, and heartbeats do not identify individual devices. Use a trusted broker, separate credentials, and access controls. Never commit Wi-Fi or MQTT passwords. Settings are stored in device flash.
 
-## 支持项目 / Support the project
-
-如果这个项目对你有帮助，欢迎自愿支持后续维护。详情见 [捐赠页面 / Donation page](DONATE.md)。
-
-If this project helps you, you are welcome to support its maintenance. See the [donation page](DONATE.md).
-
 ## License / 许可证
+
+本项目代码采用 MIT 许可证；蓝牙鼠标依赖的授权请单独确认。
 
 This project's code is under the MIT license; see [LICENSE](LICENSE). The external [ESP32-BLE-Mouse](https://github.com/T-vK/ESP32-BLE-Mouse) dependency has no clearly identified license in its upstream repository; confirm its terms separately before redistribution or commercial use.
