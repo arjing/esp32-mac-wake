@@ -31,7 +31,7 @@ pio run -t upload
 4. 选择连接方式：普通 MQTT 默认端口 1883；TLS 默认 8883，端口可修改。验证 CA 证书时需粘贴服务器 CA 的完整 PEM 文本；不验证证书的 TLS 无法验证服务器身份。
 5. 保存后设备重启并连接网络。在 Mac 的蓝牙设置中找到配置的名称并配对。
 
-设备正常运行时，长按开发板的 **BOOT 键约 3 秒**可开启配置热点并重新填写配置。首次无 Wi-Fi 配置时也会自动开启热点。已保存配置时，Wi-Fi 连接失败会持续重试，断线后立即重试，随后约每 30 秒重试一次。
+设备正常运行时，长按开发板的 **BOOT 键约 3 秒**可开启配置热点。配置页面会加载上次保存的信息；密码默认隐藏，可按按钮显示或修改。首次无 Wi-Fi 配置时也会自动开启热点。已保存配置时，Wi-Fi 连接失败会持续重试，断线后立即重试，随后约每 30 秒重试一次。
 
 ### 如何唤醒
 
@@ -54,7 +54,7 @@ pio run -t upload
 
 ### 安全与限制
 
-配置热点目前无密码，网页也没有身份验证，仅在可信环境配置。MQTT 的 `wol` 和 `esp32-heart` 是固定主题，多台设备共用时可能一起响应，心跳也无法直接区分设备。请使用可信 MQTT 服务、独立凭据和访问控制。不要将 Wi-Fi 或 MQTT 密码提交到仓库。配置信息存于设备闪存。
+配置热点目前无密码，网页也没有身份验证，连接热点的人可以读取已保存的密码和证书；仅在可信环境开启配置。MQTT 的 `wol` 和 `esp32-heart` 是固定主题，多台设备共用时可能一起响应，心跳也无法直接区分设备。请使用可信 MQTT 服务、独立凭据和访问控制。不要将 Wi-Fi 或 MQTT 密码提交到仓库。配置信息存于设备闪存。
 
 ## English
 
@@ -85,7 +85,7 @@ Alternatively use PlatformIO in VS Code. Serial logs use 115200 baud: `pio devic
 4. Choose a connection mode. Plain MQTT defaults to port 1883 and TLS to 8883; both can be changed. For verified TLS, paste the complete server CA certificate in PEM format. TLS without certificate verification does not authenticate the server.
 5. Save and allow the device to reboot. Pair the configured Bluetooth device in macOS settings.
 
-While running, hold the board's **BOOT button for about 3 seconds** to reopen the configuration hotspot. The hotspot also starts automatically when no Wi-Fi configuration exists. With saved settings, Wi-Fi retries after failure: immediately on disconnection and approximately every 30 seconds thereafter.
+While running, hold the board's **BOOT button for about 3 seconds** to reopen the configuration hotspot. The page loads saved settings; passwords are hidden by default and can be revealed or edited. The hotspot also starts automatically when no Wi-Fi configuration exists. With saved settings, Wi-Fi retries after failure: immediately on disconnection and approximately every 30 seconds thereafter.
 
 ### Wake the Mac
 
@@ -108,7 +108,7 @@ Messages are not retained, so a subscriber joining after startup may miss the on
 
 ### Security and limitations
 
-The setup hotspot currently has no password and its page has no authentication; configure it only in a trusted environment. The `wol` and `esp32-heart` topics are fixed: multiple devices using them may all react, and heartbeats do not identify individual devices. Use a trusted broker, separate credentials, and access controls. Never commit Wi-Fi or MQTT passwords. Settings are stored in device flash.
+The setup hotspot currently has no password and its page has no authentication; anyone connected can read saved passwords and certificates. Enable it only in a trusted environment. The `wol` and `esp32-heart` topics are fixed: multiple devices using them may all react, and heartbeats do not identify individual devices. Use a trusted broker, separate credentials, and access controls. Never commit Wi-Fi or MQTT passwords. Settings are stored in device flash.
 
 ## License / 许可证
 
